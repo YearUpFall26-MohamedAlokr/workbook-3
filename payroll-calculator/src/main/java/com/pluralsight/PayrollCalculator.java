@@ -1,12 +1,16 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class PayrollCalculator {
-    static void main(String[] args) {
-        try {
 
-            FileReader fileReader = new FileReader("employees.csv");
+    static void main(String[] args) {
+        Scanner in = new Scanner (System.in);
+        try {
+            System.out.println("Enter the name of the file to process: ");
+            String fileToProcessName = in.nextLine()+".csv";
+            FileReader fileReader = new FileReader(fileToProcessName);
 
             BufferedReader bufReader = new BufferedReader(fileReader);
             String input;
@@ -37,7 +41,9 @@ public class PayrollCalculator {
                 empGross[i]=(employee[employeeIndex].getEmployeeId()+"|"+employee[employeeIndex].getName()+"|"+employee[employeeIndex].getGrossPay());
             }
 
-            FileWriter fileWriter = new FileWriter("EmployeePay.txt");
+            System.out.println("Enter the name of the payroll file to create:");
+            String fileToCreate=in.nextLine()+".txt";
+            FileWriter fileWriter = new FileWriter(fileToCreate);
 
             BufferedWriter bufWriter = new BufferedWriter(fileWriter);
 
