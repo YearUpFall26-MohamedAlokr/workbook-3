@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class PayrollCalculator {
     static void main(String[] args) {
@@ -24,9 +22,30 @@ public class PayrollCalculator {
                 couter++;
             }
             bufReader.close();
+
             for(Employee e:employee){
                 System.out.println("Emplyee Id: "+e.getEmployeeId()+"   ||"+"Name: "+e.getName()+"   ||"+" Gross Pay: $"+e.getGrossPay());
             }
+
+
+            //Buffer Writer Task
+
+            String [] empGross= new String[9];
+            empGross[0]="id|name|gross pay ";
+            for (int i=1;i<9;i++){
+                int employeeIndex =i-1;
+                empGross[i]=(employee[employeeIndex].getEmployeeId()+"|"+employee[employeeIndex].getName()+"|"+employee[employeeIndex].getGrossPay());
+            }
+
+            FileWriter fileWriter = new FileWriter("EmployeePay.txt");
+
+            BufferedWriter bufWriter = new BufferedWriter(fileWriter);
+
+            for(int i =0; i <9; i++)
+                bufWriter.write(empGross[i]+"\n");
+
+            // close the writer
+            bufWriter.close();
         }
         catch(IOException e) {
             // display stack trace if there was an error
