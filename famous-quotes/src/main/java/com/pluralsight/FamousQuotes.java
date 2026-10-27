@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FamousQuotes {
+
     public static void main(String[] args) {
 
         String[] quotes = {
