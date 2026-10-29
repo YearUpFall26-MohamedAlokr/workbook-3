@@ -27,9 +27,8 @@ public class SearchInventory {
     }
     public static ArrayList<Product> getInventory() {
         ArrayList<Product> inventory = new ArrayList<Product>();
-        FileReader fileReader = null;
         try {
-            fileReader = new FileReader("inventory.csv");
+            FileReader fileReader = new FileReader("inventory.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
             String input;
             while((input = bufReader.readLine()) != null) {
